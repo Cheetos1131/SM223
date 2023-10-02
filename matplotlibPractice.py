@@ -44,7 +44,7 @@ cset = contour(Z,np.arange(-1,1.5,0.2),linewidths=2,cmap=cm.Set2)
 clabel(cset,inline=True,fmt='%1.1f',fontsize=10)
 colorbar(im) #Adds the colorbar on the right
 #Latex rendered title
-title('$-xye^{-x^2-y^2}$')
+title('$Function$')
 
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
 surf = ax.plot_wireframe(X, Y, Z, cmap=cm.viridis, linewidth=0.01, antialiased=False)
