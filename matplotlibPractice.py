@@ -13,26 +13,48 @@ def function2(x, y):
     #Defining another SM223 function
     return (-1*(x*y*np.exp((-1*x**2)-(y**2))))
 
-x = np.arange(-3.0, 3.0, 0.1)
-y = np.arange(-3.0, 3.0, 0.1)
-X, Y = meshgrid(x, y) # grid of point
-Z = function(X, Y) # evaluation of the function on the grid
+def function3(x, y):
+    #Defining another SM223 function
+    return (np.arctan(y/x))
 
-im = imshow(Z,cmap=cm.RdBu) # drawing the function
-# adding the Contour lines with labels
+def function4(x, y):
+    #Defining another SM223 function
+    return (np.sin(x) + np.sin(y))
+
+def function5(x, y):
+    #Defining another SM223 function
+    return (np.sin(np.sqrt(x**2 + y**2)))
+
+def function6(x, y):
+    #Defining another SM223 function
+    return (x*np.exp(x*y))
+
+def line(x, y):
+    return (x + y)
+
+x = np.arange(-1.0, 1.0, 0.01)
+y = np.arange(-1.0, 1.0, 0.01)
+X, Y = meshgrid(x, y) #Makes grid of points
+Z = function6(X, Y) #Creates the height Z from the meshmap and multivariable function
+Z2 = line(X, Y)
+
+im = imshow(Z,cmap=cm.coolwarm) #Draws the function
+#Adds the Contour lines with labels
 cset = contour(Z,np.arange(-1,1.5,0.2),linewidths=2,cmap=cm.Set2)
 clabel(cset,inline=True,fmt='%1.1f',fontsize=10)
-colorbar(im) # adding the colobar on the right
-# latex fashion title
+colorbar(im) #Adds the colorbar on the right
+#Latex rendered title
 title('$-xye^{-x^2-y^2}$')
-show()
 
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
-surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
+surf = ax.plot_wireframe(X, Y, Z, cmap=cm.viridis, linewidth=0.01, antialiased=False)
+surf2 = ax.plot_surface(X, Y, Z2, cmap=cm.viridis, linewidth=0, antialiased=False)
 
 ax.set_zlim(-1, 2)
 ax.zaxis.set_major_locator(LinearLocator(10))
 ax.zaxis.set_major_formatter('{x:.02f}')
 
 fig.colorbar(surf, shrink=0.5, aspect=5)
+
 plt.show()
+show()
