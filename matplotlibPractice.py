@@ -44,7 +44,7 @@ cset = contour(Z,np.arange(-1,1.5,0.2),linewidths=2,cmap=cm.Set2)
 clabel(cset,inline=True,fmt='%1.1f',fontsize=10)
 colorbar(im) #Adds the colorbar on the right
 #Latex rendered title
-title('$Function$')
+title('Contour Map of Function')
 
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
 surf = ax.plot_wireframe(X, Y, Z, cmap=cm.viridis, linewidth=0.01, antialiased=False)
@@ -56,5 +56,6 @@ ax.zaxis.set_major_formatter('{x:.02f}')
 
 fig.colorbar(surf, shrink=0.5, aspect=5)
 
+plt.title('3D Plot of Function')
 plt.show()
 show()
