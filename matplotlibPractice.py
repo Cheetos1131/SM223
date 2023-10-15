@@ -29,14 +29,36 @@ def function6(x, y):
     #Defining another SM223 function
     return (x*np.exp(x*y))
 
+#14.7 HW
+def function7(x, y):
+    #From Question 3
+    #Set zlim to (-30, 30)
+    return (4 + np.power(x, 3) + np.power(y, 3) - (3*x*y))
+
+def function8(x, y):
+    #From Question 5
+    return (np.power(x, 2) + (x*y) + np.power(y, 2) + y)
+
+def function9(x, y):
+    #From Question 11
+    return (np.power(x, 3) - (3*x) + (3*x*np.power(y, 2)))
+
+def function10(x, y):
+    #From Question 6
+    return ((x*y) - (2*x) - (2*y) - (np.power(x, 2)) - (np.power(y, 2)))
+
+def function11(x, y):
+    #From Question 41
+    return (1 - x - y)
+
 def line(x, y):
     return (x + y)
 
-x = np.arange(-1.0, 1.0, 0.01)
-y = np.arange(-1.0, 1.0, 0.01)
+x = np.arange(-5, 5, 0.1)
+y = np.arange(-5, 5, 0.1)
 X, Y = meshgrid(x, y) #Makes grid of points
-Z = function6(X, Y) #Creates the height Z from the meshmap and multivariable function
-Z2 = line(X, Y)
+Z = function11(X, Y) #Creates the height Z from the meshmap and multivariable function
+#Z2 = line(X, Y)
 
 im = imshow(Z,cmap=cm.coolwarm) #Draws the function
 #Adds the Contour lines with labels
@@ -47,10 +69,10 @@ colorbar(im) #Adds the colorbar on the right
 title('Contour Map of Function')
 
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
-surf = ax.plot_wireframe(X, Y, Z, cmap=cm.viridis, linewidth=0.01, antialiased=False)
-surf2 = ax.plot_surface(X, Y, Z2, cmap=cm.viridis, linewidth=0, antialiased=False)
+surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, linewidth=0.01, antialiased=False)
+#surf2 = ax.plot_surface(X, Y, Z2, cmap=cm.viridis, linewidth=0, antialiased=False)
 
-ax.set_zlim(-1, 2)
+ax.set_zlim(-30, 30)
 ax.zaxis.set_major_locator(LinearLocator(10))
 ax.zaxis.set_major_formatter('{x:.02f}')
 
